@@ -1,0 +1,38 @@
+[
+    {
+        "lastname": "Deriu",
+        "firstname": "Vito",
+        "id": 1,
+        "age": 26,
+        "team": "Orange",
+        "sexe": "male",
+        "img": "image.jpg"
+    },
+    {
+        "lastname": "PGB",
+        "firstname": "Alex",
+        "id": 2,
+        "age": 18,
+        "team": "Rouge",
+        "sexe": "male",
+        "img": "image.jpg"
+    },
+    {
+        "lastname": "Siary Maurel",
+        "firstname": "Loukax",
+        "id": 3,
+        "age": 19,
+        "team": "Charo",
+        "sexe": "3 fois par semaine",
+        "img": "image.jpg"
+    },
+    {
+        "lastname": "Herry",
+        "firstname": "Arthur",
+        "id": 4,
+        "age": 18,
+        "team": "Pedo",
+        "sexe": "male",
+        "img": "image.jpg"
+    }
+]
