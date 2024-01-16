@@ -7,7 +7,24 @@
     <title>Golanta</title>
 </head>
 <body>
-    page qui permet d'ajouter les aventuriers
+
+
+    <div class="content">
+        <div class="main">
+            <form class="form" action="/upload" method="post" enctype="multipart/form-data">
+                <input class="form-txt" type="text" name="LastName" placeholder="Nom"/>
+                <input class="form-txt" type="text" name="FirstName" placeholder="Prénom"/>
+                <input class="form-txt" type="text" name="Team" placeholder="Equipe"/>
+                <input class="form-txt" type="text" name="Sexe" placeholder="Sexe"/>
+                <input class="form-txt" type="number" name="Age" placeholder="Age"/>
+                <!-- <input class="form-txt" type="number" name="Id" placeholder="Id"/> -->
+                <input class="form-file" type="file" name="Image" />
+                <input class="form-submit" type="submit" value="Upload" />
+            </form>
+        </div>
+    </div>
+
+
 </body>
 </html>
 {{end}}

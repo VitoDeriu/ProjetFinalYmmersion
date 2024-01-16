@@ -6,6 +6,5 @@ import (
 )
 
 func Ajout(w http.ResponseWriter, r *http.Request) {
-
 	temps.Temp.ExecuteTemplate(w, "Ajout", nil)
 }
