@@ -99,7 +99,7 @@ func UploadFile(w http.ResponseWriter, r *http.Request) {
 		Aventurier.Sexe = r.FormValue("Sexe")           //récup du sexe
 		Aventurier.Img = handler.Filename               //récup le nom de l'image qu'on a créer plus haut.
 		Aventurier.Age = GetAgeInt(r)                   //on récup l'age via une fonction qui transforme en int
-		Aventurier.Id = GetAventurierId()               //on récup l'id via une fonction qui attribut un id en fonction du nombre d'aventurier déjà présent
+		Aventurier.Id = GetAventurierId(r)               //on récup l'id via une fonction qui attribut un id en fonction du nombre d'aventurier déjà présent
 		AddAventurier(Aventurier, true)                 //et on lance la fonction pour ajouter l'aventurier avec toutes les infos qu'on a récupérer
 	}
 
@@ -115,7 +115,7 @@ func GetAgeInt(r *http.Request) int {
 	return int(a) //et on return un int pour pouvoir l'envoyer dans la struct
 }
 
-// récupère l'id de l'aventurier et le transforme en int. remplacé par GetAventurierId qui le fait en auto
+// récupère l'id de l'aventurier depuis le form et le transforme en int. remplacé par GetAventurierId qui le fait en auto
 func GetIdInt(r *http.Request) int {
 	a, err := strconv.ParseInt(r.FormValue("Id"), 10, 0)
 	if err != nil {
@@ -125,7 +125,7 @@ func GetIdInt(r *http.Request) int {
 }
 
 // créé un id auto qui s'incrémente de 1 a chaque nouvelle création d'aventurier
-func GetAventurierId() int {
+func GetAventurierId(r *http.Request) int {
 	id := len(Aventurier) + 1
 	return id
 }
