@@ -2,7 +2,8 @@ package controller
 
 import (
 	"ProjetFinalYmmersion/data"
-	"ProjetFinalYmmersion/temps"
+
+	// "ProjetFinalYmmersion/temps"
 	"fmt"
 	"io"
 	"net/http"
@@ -15,8 +16,8 @@ import (
 func UploadFile(w http.ResponseWriter, r *http.Request) {
 
 	// Récup du fichier img
-	file, handler, err := r.FormFile("Image") 	//on récup le fichier depuis le form et on le stock dans file
-	if err != nil {                          	//gestion d'erreur
+	file, handler, err := r.FormFile("Image") //on récup le fichier depuis le form et on le stock dans file
+	if err != nil {                           //gestion d'erreur
 		fmt.Println("Error retrieving the file")
 		fmt.Println(err)
 		return
@@ -55,21 +56,29 @@ func UploadFile(w http.ResponseWriter, r *http.Request) {
 		Aventurier.Sexe = r.FormValue("Sexe")           //récup du sexe
 		Aventurier.Img = handler.Filename               //récup le nom de l'image qu'on a créer plus haut.
 		Aventurier.Age = GetAgeInt(r)                   //on récup l'age via une fonction qui transforme en int
-		Aventurier.Id = GetAventurierId()              	//on récup l'id via une fonction qui attribut un id en fonction du nombre d'aventurier déjà présent
+		Aventurier.Id = GetAventurierIdSmart()               //on récup l'id via une fonction qui attribut un id en fonction du nombre d'aventurier déjà présent
 		AddAventurier(Aventurier, true)                 //et on lance la fonction pour ajouter l'aventurier avec toutes les infos qu'on a récupérer
+
+		idStringed := strconv.Itoa(Aventurier.Id) //transform l'id en string pour la query de la redirection
+
+		//demander aux mentor si c'est pas plus propre de faire comme ca
+		//var adress = fmt.Sprintf("aventurier?id=" + strconv.Itoa(Adventurer.Id))
+
+		http.Redirect(w, r, "/aventurier?id="+idStringed, http.StatusSeeOther) //redirect vers la page de l'aventurier créé grace a la query + StatusSeeOther (code 303) qui évite le nouvel envoi de formulaire si on F5 la page
+
 	}
 
 	// Renvoie sur la page de l'Aventurier créé
-	temps.Temp.ExecuteTemplate(w, "Aventurier", Aventuriers)
+	// temps.Temp.ExecuteTemplate(w, "Aventurier", Aventuriers)
 }
 
 // récupère l'age de l'aventurier et le transforme en int
 func GetAgeInt(r *http.Request) int {
-	a, err := strconv.ParseInt(r.FormValue("Age"), 10, 0) 	//on converti l'age qu'on a récup en int
+	a, err := strconv.ParseInt(r.FormValue("Age"), 10, 0) //on converti l'age qu'on a récup en int
 	if err != nil {
 		fmt.Println("Error parsing age", err)
 	}
-	return int(a) 											//et on return un int pour pouvoir l'envoyer dans la struct
+	return int(a) //et on return un int pour pouvoir l'envoyer dans la struct
 }
 
 // récupère l'id de l'aventurier depuis le form et le transforme en int. remplacé par GetAventurierId qui le fait en auto
@@ -81,8 +90,23 @@ func GetAgeInt(r *http.Request) int {
 	return int(a)
 }*/
 
-// créé un id auto qui s'incrémente de 1 a chaque nouvelle création d'aventurier
-func GetAventurierId() int {
-	id := len(Aventuriers) + 1
+// créé un id auto qui s'incrémente de 1 a chaque nouvelle création d'aventurier -- remplacé par GetAventurierIdSmart qui peut rajouter un id manquant quand y'en a un qui s'est fait supprimé 
+// func GetAventurierId() int {
+// 	id := len(Aventuriers) + 1
+// 	return id
+// }
+
+func GetAventurierIdSmart() int {  //a commenter en détail quand j'ia le temps
+	var id int
+	var exist bool
+	for id = 1; !exist; id++ { //on va check chaque aventurier pour voir si leur id existe déjà et dès qu'il existe pas on le crée pour l'envoyer dans le nouvel aventurier
+		exist = true
+		for _, j := range Aventuriers {
+			if id == j.Id {
+				exist = false
+			}
+		}
+	}
+	id--
 	return id
 }
