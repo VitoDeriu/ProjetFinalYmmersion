@@ -12,7 +12,7 @@ func InitServer() {
 	http.HandleFunc("/ajout", controller.Ajout)
 	http.HandleFunc("/liste", controller.Liste)
 	http.HandleFunc("/upload", controller.UploadFile)
-	http.HandleFunc("/aventurier", controller.Aventureur)
+	http.HandleFunc("/aventurier", controller.FicheAventurier)
 
 	rootDoc, _ := os.Getwd()
 	fileserver := http.FileServer(http.Dir(rootDoc + "/assets"))
