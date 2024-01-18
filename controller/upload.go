@@ -56,7 +56,7 @@ func UploadFile(w http.ResponseWriter, r *http.Request) {
 		Aventurier.Sexe = r.FormValue("Sexe")           //récup du sexe
 		Aventurier.Img = handler.Filename               //récup le nom de l'image qu'on a créer plus haut.
 		Aventurier.Age = GetAgeInt(r)                   //on récup l'age via une fonction qui transforme en int
-		Aventurier.Id = GetAventurierIdSmart()               //on récup l'id via une fonction qui attribut un id en fonction du nombre d'aventurier déjà présent
+		Aventurier.Id = GetAventurierIdSmart()          //on récup l'id via une fonction qui attribut un id en fonction du nombre d'aventurier déjà présent
 		AddAventurier(Aventurier, true)                 //et on lance la fonction pour ajouter l'aventurier avec toutes les infos qu'on a récupérer
 
 		idStringed := strconv.Itoa(Aventurier.Id) //transform l'id en string pour la query de la redirection
