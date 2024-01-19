@@ -1,4 +1,4 @@
-{{define "Ajout"}}
+{{define "Modif"}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="../static/css/global.css">
 </head>
 <body>
+
+    <!-- c'est juste un copier collé de ajout, faut le modifier  -->
     <div class="content">
         <div class="main">
-            <form class="form" action="/upload" method="post" enctype="multipart/form-data">
-                <input class="form-txt" type="text" name="LastName" placeholder="Nom" required/>
-                <input class="form-txt" type="text" name="FirstName" placeholder="Prénom" required/>
+            <form class="form" action="/treatment_for_modif" method="post" enctype="multipart/form-data">
+                {{range .}}
+                <input class="form-txt" type="text" name="LastName" value="{{.LastName}}" required/>
+                <input class="form-txt" type="text" name="FirstName" value="{{.FirstName}}" required/>
                 <select calss="form-select" name="Team" required>
-                    <option value="">Choisissez une équipe</option>
+                    <option value="{{.Team}}">{{.Team}}</option>
                     <option value="Bleu">Bleu</option>
                     <option value="Blanc">Blanc</option>
                     <option value="Rouge">Rouge</option>
@@ -24,7 +27,7 @@
                     <option value="Bad">Pas la Bonne</option>
                 </select>
                 <select class="form-select" name="Sexe" required>
-                    <option value="" selected>Choisir une option</option>
+                    <option value="{{.Sexe}}">{{.Sexe}}</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Kawaii Kheir ChipiChapa">Kawaii Kheir ChipiChapa</option>
@@ -33,9 +36,10 @@
                     <option value="Le classique Hélicoptère de combat">Le classique Hélicoptère de combat</option>
                     <option value="Foking Toyota Zupra VUTUTUTUTU !!">Foking Toyota Zupra VUTUTUTUTU !!</option>
                 </select>
-                <input class="form-txt" type="number" name="Age" placeholder="Age" required/>
-                <input class="form-file" type="file" name="Image" required />
-                <input class="form-submit" type="submit" value="Upload" />
+                <input class="form-txt" type="number" name="Age" value="{{.Age}}" required/>
+                <input class="form-file" type="file" name="Image" value="{{.Img}}" required/>
+                <input class="form-submit" type="submit" value="Modif" />
+                {{end}}
             </form>
         </div>
     </div>

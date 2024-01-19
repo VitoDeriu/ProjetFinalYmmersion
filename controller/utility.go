@@ -7,6 +7,9 @@ import (
 	"os"
 )
 
+
+var Aventuriers []data.Aventurier  //déclaration de variable Aventuriers qui correspond a la liste des struct d'aventuriers
+
 // ajout des données de Aventurier dans notre fichier JSON
 func SetDataToJson() {
 	data, err := json.Marshal(Aventuriers) 					//envoi la struct vers un json
@@ -50,4 +53,26 @@ func RemoveAventurier(index int, save bool) {
 	if save {
 		SetDataToJson() 									//et on réécrit le json sans celui qu'on a pas append du coup
 	}
+}
+
+//chekc si l'aventurier existe dans la liste de struct globale
+func AventurierExist(id int) bool {
+	GetDataFromJson()
+	for _, avent := range Aventuriers { 	//on range dans la liste de struct aventurier pour voir si l'id qu'on a rentrer en parametre existe dedans
+		if avent.Id == id { 				//si l'id existe ca nous renvoie true 
+			return true
+		}
+	}
+	return false 							//si l'id n'existe pas ca renvoie false
+}
+
+// recherche par ID
+func SearchId(id int) []data.Aventurier {
+	var pertinentAventurier []data.Aventurier 								//déclare une variable qui correspond a la struct
+	for _, aventurier := range Aventuriers {  								//on va checker chaque articles
+		if aventurier.Id == id { 											//on va voir si l'id qu'on a rentrer dans la query de l'url correspond a l'id de l'article
+			pertinentAventurier = append(pertinentAventurier, aventurier) 	//si oui on stocke l'article dans pertinentArticle
+		}
+	}
+	return pertinentAventurier //comme ca on renvoit la struct dans le template en haut
 }

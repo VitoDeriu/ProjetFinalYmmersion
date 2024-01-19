@@ -1,20 +1,24 @@
 package controller
 
 import (
-	"ProjetFinalYmmersion/data"
 	"ProjetFinalYmmersion/temps"
 	"net/http"
 )
 
-var Aventuriers []data.Aventurier
+
 
 func Index(w http.ResponseWriter, r *http.Request) {
 
-	if r.URL.Path != "/" {
-		temps.Temp.ExecuteTemplate(w, "error404", nil)
+	//if pour la gestion de 404 not found pour un mauvais url
+	if r.URL.Path != "/"{ 
+		temps.Temp.ExecuteTemplate(w, "Error", nil)
 		return
 	}
 
-	GetDataFromJson()
+	// on crée la liste de struct Aventurier a l'arrivé sur la page index,
+	// a voir s'il faudrait pas le mettre dans le routeur a l'initialisation du serv ?
+	
+
+	//on exec le template
 	temps.Temp.ExecuteTemplate(w, "Index", nil)
 }
