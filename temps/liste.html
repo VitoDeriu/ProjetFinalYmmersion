@@ -14,10 +14,10 @@
         {{.Age}}
         {{.Team}}
         {{.Sexe}}
+        <form action="" method="post">
+             <button class="suppr-art-btn" value="{{.Id}}" name="Suppr" id="Suppr" type="submit">Supprimer</button>
+         </form>
     {{end}}
 </body>
 </html>
 {{end}}
-
-<a href="/article?type={{.Id}}"></a> <!-- on envoie une string avec la query qui correspond a l'Id de l'aventurier
-     pour récup le bon article dans le aventurier.go mais ici on s'en sert quand on va cliquer sur un aventurier -->

@@ -67,9 +67,6 @@ func UploadFile(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/aventurier?id="+idStringed, http.StatusSeeOther) //redirect vers la page de l'aventurier créé grace a la query + StatusSeeOther (code 303) qui évite le nouvel envoi de formulaire si on F5 la page
 
 	}
-
-	// Renvoie sur la page de l'Aventurier créé
-	// temps.Temp.ExecuteTemplate(w, "Aventurier", Aventuriers)
 }
 
 // récupère l'age de l'aventurier et le transforme en int
@@ -80,21 +77,6 @@ func GetAgeInt(r *http.Request) int {
 	}
 	return int(a) //et on return un int pour pouvoir l'envoyer dans la struct
 }
-
-// récupère l'id de l'aventurier depuis le form et le transforme en int. remplacé par GetAventurierId qui le fait en auto
-/*func GetIdInt(r *http.Request) int {
-	a, err := strconv.ParseInt(r.FormValue("Id"), 10, 0)
-	if err != nil {
-		fmt.Println("Error parsing age", err)
-	}
-	return int(a)
-}*/
-
-// créé un id auto qui s'incrémente de 1 a chaque nouvelle création d'aventurier -- remplacé par GetAventurierIdSmart qui peut rajouter un id manquant quand y'en a un qui s'est fait supprimé 
-// func GetAventurierId() int {
-// 	id := len(Aventuriers) + 1
-// 	return id
-// }
 
 func GetAventurierIdSmart() int {  //a commenter en détail quand j'ia le temps
 	var id int
@@ -110,3 +92,25 @@ func GetAventurierIdSmart() int {  //a commenter en détail quand j'ia le temps
 	id--
 	return id
 }
+
+
+
+
+
+
+//anciene fonctions, faudrait les supprimés
+
+// récupère l'id de l'aventurier depuis le form et le transforme en int. remplacé par GetAventurierId qui le fait en auto
+/*func GetIdInt(r *http.Request) int {
+	a, err := strconv.ParseInt(r.FormValue("Id"), 10, 0)
+	if err != nil {
+		fmt.Println("Error parsing age", err)
+	}
+	return int(a)
+}*/
+
+// créé un id auto qui s'incrémente de 1 a chaque nouvelle création d'aventurier -- remplacé par GetAventurierIdSmart qui peut rajouter un id manquant quand y'en a un qui s'est fait supprimé 
+// func GetAventurierId() int {
+// 	id := len(Aventuriers) + 1
+// 	return id
+// }

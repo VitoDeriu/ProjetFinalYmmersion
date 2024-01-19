@@ -8,11 +8,16 @@ import (
 )
 
 func InitServer() {
+	controller.GetDataFromJson() 
+
 	http.HandleFunc("/", controller.Index)
 	http.HandleFunc("/ajout", controller.Ajout)
 	http.HandleFunc("/liste", controller.Liste)
 	http.HandleFunc("/upload", controller.UploadFile)
 	http.HandleFunc("/aventurier", controller.FicheAventurier)
+	http.HandleFunc("/treatment_to_modif", controller.Treatment_to_modifs)
+	http.HandleFunc("/treatment_for_modif", controller.Modification)
+
 
 	rootDoc, _ := os.Getwd()
 	fileserver := http.FileServer(http.Dir(rootDoc + "/assets"))
