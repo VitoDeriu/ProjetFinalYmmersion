@@ -60,7 +60,7 @@ func AventurierExist(id int) bool {
 	GetDataFromJson()
 	for _, avent := range Aventuriers { 	//on range dans la liste de struct aventurier pour voir si l'id qu'on a rentrer en parametre existe dedans
 		if avent.Id == id { 				//si l'id existe ca nous renvoie true 
-			return true
+			return true 
 		}
 	}
 	return false 							//si l'id n'existe pas ca renvoie false
