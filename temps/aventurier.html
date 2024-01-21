@@ -12,12 +12,17 @@
                 {{if eq .Id .Id}}
                     {{.LastName}}
                     {{.FirstName}}
+                    {{.Id}}
                     {{.Age}}
                     {{.Team}}
                     {{.Sexe}}
+                    {{.Img}}
                 {{end}}
+        <form action="" method="post">
+            <button class="suppr-art-btn" value="{{.Id}}" name="Suppr" id="Suppr" type="submit">Supprimer</button>
+        </form>
         <form class="form" action="/treatment_to_modif?id={{.Id}}" method="post">
-            <input class="form-submit" type="submit" value="Treatment_to_modif" />
+            <input class="form-submit" type="submit" value="Modifier" />
         </form>
     {{end}}
 </body>

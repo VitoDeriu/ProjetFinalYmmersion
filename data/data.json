@@ -1,1 +1,56 @@
-[{"lastname":"Deriu","firstname":"Vito","id":1,"age":26,"team":"Orange","sexe":"male","img":"image.jpg"},{"lastname":"PGB","firstname":"Alex","id":2,"age":18,"team":"Rouge","sexe":"male","img":"image.jpg"},{"lastname":"Siary Maurel","firstname":"Loukax","id":3,"age":19,"team":"Bleu","sexe":"male","img":"image.jpg"},{"lastname":"Herry","firstname":"Arthur","id":4,"age":18,"team":"Orange","sexe":"male","img":"image.jpg"},{"lastname":"Medd","firstname":"Kheir","id":5,"age":23,"team":"Marron","sexe":"Male","img":"KawaiiKheir.jpg"},{"lastname":"Leboss","firstname":"Alan","id":6,"age":27,"team":"Blanc","sexe":"Alan's Rizz","img":"téléchargement.jpg"}]
+[
+  {
+    "lastname": "Deriu",
+    "firstname": "Vito",
+    "id": 1,
+    "age": 26,
+    "team": "Orange",
+    "sexe": "male",
+    "img": "image.jpg"
+  },
+  {
+    "lastname": "PGB",
+    "firstname": "Alex",
+    "id": 2,
+    "age": 18,
+    "team": "Rouge",
+    "sexe": "male",
+    "img": "image.jpg"
+  },
+  {
+    "lastname": "Herry",
+    "firstname": "Arthur",
+    "id": 4,
+    "age": 18,
+    "team": "Orange",
+    "sexe": "male",
+    "img": "image.jpg"
+  },
+  {
+    "lastname": "Modif",
+    "firstname": "Modif",
+    "id": 5,
+    "age": 25,
+    "team": "Rouge",
+    "sexe": "Male",
+    "img": "Capture.PNG"
+  },
+  {
+    "lastname": "Siarax Maurelax",
+    "firstname": "Loukaxaxaxax",
+    "id": 3,
+    "age": 22,
+    "team": "Jaune",
+    "sexe": "Le classique Hélicoptère de combat",
+    "img": "image (2).png"
+  },
+  {
+    "lastname": "Bioules",
+    "firstname": "Noa",
+    "id": 6,
+    "age": 19,
+    "team": "Marron",
+    "sexe": "Female",
+    "img": "Capture d’écran (72).png"
+  }
+]

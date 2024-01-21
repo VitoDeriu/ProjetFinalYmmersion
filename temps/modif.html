@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="../static/css/global.css">
 </head>
 <body>
-
-    <!-- c'est juste un copier collé de ajout, faut le modifier  -->
     <div class="content">
         <div class="main">
-            <form class="form" action="/treatment_for_modif" method="post" enctype="multipart/form-data">
-                {{range .}}
-                <input class="form-txt" type="text" name="LastName" value="{{.LastName}}" required/>
+            {{range .}}
+            <form class="form" action="/treatment_for_modif?id={{.Id}}" method="POST" enctype="multipart/form-data">
+                <input class="form-txt" type="text" name="LastName" value="{{.LastName}}"required/>
                 <input class="form-txt" type="text" name="FirstName" value="{{.FirstName}}" required/>
                 <select calss="form-select" name="Team" required>
                     <option value="{{.Team}}">{{.Team}}</option>
@@ -27,7 +25,7 @@
                     <option value="Bad">Pas la Bonne</option>
                 </select>
                 <select class="form-select" name="Sexe" required>
-                    <option value="{{.Sexe}}">{{.Sexe}}</option>
+                    <option value="{{.Sexe}}" selected>{{.Sexe}}</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Kawaii Kheir ChipiChapa">Kawaii Kheir ChipiChapa</option>
@@ -37,10 +35,11 @@
                     <option value="Foking Toyota Zupra VUTUTUTUTU !!">Foking Toyota Zupra VUTUTUTUTU !!</option>
                 </select>
                 <input class="form-txt" type="number" name="Age" value="{{.Age}}" required/>
-                <input class="form-file" type="file" name="Image" value="{{.Img}}" required/>
-                <input class="form-submit" type="submit" value="Modif" />
-                {{end}}
+                Veuillez à nouveau upload une image s'il vous plait
+                <input class="form-file" type="file" name="Image" value="{{.Img}}" />
+                <input class="form-submit" type="submit" value="Modifier" />
             </form>
+            {{end}}
         </div>
     </div>
 </body>

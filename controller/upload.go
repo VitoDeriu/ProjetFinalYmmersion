@@ -2,8 +2,6 @@ package controller
 
 import (
 	"ProjetFinalYmmersion/data"
-
-	// "ProjetFinalYmmersion/temps"
 	"fmt"
 	"io"
 	"net/http"
@@ -46,7 +44,9 @@ func UploadFile(w http.ResponseWriter, r *http.Request) {
 	// Récupération des info du formulaire et stockage dans les attributs de la structure
 	if r.Method == "POST" {
 
+		fmt.Println("r :", r)
 		r.ParseForm()
+		fmt.Println("r.Form :", r.Form)
 		var Aventurier data.Aventurier
 
 		//récupération des données du formulaire avec FormValue uniquement pour les strings
@@ -71,9 +71,16 @@ func UploadFile(w http.ResponseWriter, r *http.Request) {
 
 // récupère l'age de l'aventurier et le transforme en int
 func GetAgeInt(r *http.Request) int {
-	a, err := strconv.ParseInt(r.FormValue("Age"), 10, 0) //on converti l'age qu'on a récup en int
+	ageStr := r.FormValue("Age")
+	if ageStr == "" {
+		fmt.Println("l'age est une chaine vide")
+		return 0
+	}
+
+	a, err := strconv.ParseInt(r.PostFormValue("Age"), 10, 0) //on converti l'age qu'on a récup en int
 	if err != nil {
 		fmt.Println("Error parsing age", err)
+		return 0
 	}
 	return int(a) //et on return un int pour pouvoir l'envoyer dans la struct
 }
@@ -92,25 +99,3 @@ func GetAventurierIdSmart() int {  //a commenter en détail quand j'ia le temps
 	id--
 	return id
 }
-
-
-
-
-
-
-//anciene fonctions, faudrait les supprimés
-
-// récupère l'id de l'aventurier depuis le form et le transforme en int. remplacé par GetAventurierId qui le fait en auto
-/*func GetIdInt(r *http.Request) int {
-	a, err := strconv.ParseInt(r.FormValue("Id"), 10, 0)
-	if err != nil {
-		fmt.Println("Error parsing age", err)
-	}
-	return int(a)
-}*/
-
-// créé un id auto qui s'incrémente de 1 a chaque nouvelle création d'aventurier -- remplacé par GetAventurierIdSmart qui peut rajouter un id manquant quand y'en a un qui s'est fait supprimé 
-// func GetAventurierId() int {
-// 	id := len(Aventuriers) + 1
-// 	return id
-// }

@@ -17,6 +17,13 @@
         <form action="" method="post">
              <button class="suppr-art-btn" value="{{.Id}}" name="Suppr" id="Suppr" type="submit">Supprimer</button>
          </form>
+         <form class="form" action="/treatment_to_modif?id={{.Id}}" method="post">
+            <input class="form-submit" type="submit" value="Modifier" />
+        </form>
+         <form class="form" action="/aventurier?id={{.Id}}" method="post">
+            <input class="form-submit" type="submit" value="Voir l'aventurier" />
+        </form>
+
     {{end}}
 </body>
 </html>
