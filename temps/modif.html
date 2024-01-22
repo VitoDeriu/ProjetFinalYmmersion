@@ -36,7 +36,7 @@
                 </select>
                 <input class="form-txt" type="number" name="Age" value="{{.Age}}" required/>
                 Veuillez à nouveau upload une image s'il vous plait
-                <input class="form-file" type="file" name="Image" value="{{.Img}}" />
+                <input class="form-file" type="file" name="Image" value="assets/profilePic/{{.Img}}" required/>
                 <input class="form-submit" type="submit" value="Modifier" />
             </form>
             {{end}}
