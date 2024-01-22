@@ -1,20 +1,38 @@
 {{define "Index"}}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Golanta</title>
-    <link rel="stylesheet" href="../static/css/global.css">
-    <link rel="stylesheet" href="../static/css/index.css">
-</head>
-<body>
-    <form action="/liste">
-        <button>afficher les aventuriers</button>
-    </form>
-    <form action="/ajout">
-        <button>créer son aventurier</button>
-    </form>
-</body>
+    <link rel="stylesheet" href="../static/css/global.css" />
+    <link rel="stylesheet" href="../static/css/index.css" />
+  </head>
+
+  <body>
+    <div class="bvn">
+      <div class="titre">BIENVENUE SUR GOLANTA</div>
+      <div class="bienvenue">
+        <div class="bienvenue-text">
+          Bonjour et bienvenue cher aventurier sur l'ile de Golanta ! Si tu es
+          impatient de commencer ton aventure tu peux créer ton aventurier dès
+          maintenant ou alors tu peux rencontrer les aventuriers déjà présent
+          sur l'île. De nombreuses aventure se préparent alors n'attends pas !
+        </div>
+      </div>
+    </div>
+    <div class="ctn">
+      <div class="outter-btn">
+        <div class="inner-btn">
+          <a class="acceuil-btn" href="/liste">Afficher les<br />Aventuriers</a>
+        </div>
+      </div>
+      <div class="outter-btn">
+        <div class="inner-btn">
+          <a class="acceuil-btn" href="/ajout">Créer son<br />Aventurier</a>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
 {{end}}

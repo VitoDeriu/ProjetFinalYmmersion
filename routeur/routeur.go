@@ -8,7 +8,7 @@ import (
 )
 
 func InitServer() {
-	controller.GetDataFromJson() 
+	controller.GetDataFromJson() // On initialise le tableau "Aventurier" ici directement pour eviter de le faire dans plusieurs fonctions.
 
 	http.HandleFunc("/", controller.Index)
 	http.HandleFunc("/ajout", controller.Ajout)

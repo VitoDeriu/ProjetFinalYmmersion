@@ -10,7 +10,7 @@ import (
 
 var Aventuriers []data.Aventurier  //déclaration de variable Aventuriers qui correspond a la liste des struct d'aventuriers
 
-// ajout des données de Aventurier dans notre fichier JSON
+// Ajout des données de Aventurier dans notre fichier JSON
 func SetDataToJson() {
 	data, err := json.Marshal(Aventuriers) 					//envoi la struct vers un json
 	if err != nil {
@@ -20,7 +20,7 @@ func SetDataToJson() {
 	os.WriteFile("data/data.json", data, 0644) 				//réécriture du json
 }
 
-// récupere les data du json pour les envoyer dans une struct
+// Récupération des datas du json pour les envoyer dans une struct
 func GetDataFromJson() {
 	data, err := os.ReadFile("data/data.json") 				//ouverture et lecture du json
 	if err != nil {
@@ -30,7 +30,7 @@ func GetDataFromJson() {
 	json.Unmarshal(data, &Aventuriers) 						//passage en json vers la struct
 }
 
-// fonction pour ajouter un article à notre tableau et potentiellement au json
+// Ajoute un Aventurier au tableau "Aventuriers"
 func AddAventurier(aventurier data.Aventurier, save bool) {
 	GetDataFromJson()   									//on ouvre le json et on récup la struct
 	Aventuriers = append(Aventuriers, aventurier) 			//on ajoute l'aventurier a une nouvelle 
@@ -39,7 +39,7 @@ func AddAventurier(aventurier data.Aventurier, save bool) {
 	}
 }
 
-// fonction pour supprimer un article de notre tableau et potentiellement du json
+// Supprime un Aventurier du tableau "Aventuriers" et donc du json
 func RemoveAventurier(index int, save bool) {
 	GetDataFromJson() 										//on récup le json en struct
 	var NewAventurier []data.Aventurier
@@ -55,10 +55,10 @@ func RemoveAventurier(index int, save bool) {
 	}
 }
 
-//chekc si l'aventurier existe dans la liste de struct globale
+// Check si l'aventurier existe dans le tableau "Aventuriers"
 func AventurierExist(id int) bool {
 	GetDataFromJson()
-	for _, avent := range Aventuriers { 	//on range dans la liste de struct aventurier pour voir si l'id qu'on a rentrer en parametre existe dedans
+	for _, avent := range Aventuriers {		//on range dans la liste de struct Aventuriers pour voir si l'id qu'on a rentré en paramètre existe a l'intérieur
 		if avent.Id == id { 				//si l'id existe ca nous renvoie true 
 			return true 
 		}
@@ -74,5 +74,5 @@ func SearchId(id int) []data.Aventurier {
 			pertinentAventurier = append(pertinentAventurier, aventurier) 	//si oui on stocke l'article dans pertinentArticle
 		}
 	}
-	return pertinentAventurier //comme ca on renvoit la struct dans le template en haut
+	return pertinentAventurier	//comme ca on renvoit la struct dans le template en haut
 }

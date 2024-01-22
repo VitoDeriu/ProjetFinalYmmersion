@@ -9,7 +9,6 @@ import (
 
 
 func Liste(w http.ResponseWriter, r *http.Request) {
-	// GetDataFromJson()
 
 	if r.Method == "GET" {
 		data := Aventuriers
@@ -30,5 +29,4 @@ func Liste(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-
 }
